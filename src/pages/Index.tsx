@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
@@ -9,6 +10,7 @@ import Icon from '@/components/ui/icon';
 
 const Index = () => {
   const [email, setEmail] = useState('');
+  const navigate = useNavigate();
 
   const scrollToSection = (id: string) => {
     document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
@@ -39,8 +41,8 @@ const Index = () => {
               <button onClick={() => scrollToSection('contact')} className="text-sm hover:text-primary transition-colors">
                 Контакты
               </button>
-              <Button variant="outline" size="sm">Войти</Button>
-              <Button size="sm" className="bg-gradient-to-r from-primary to-secondary hover:opacity-90">
+              <Button variant="outline" size="sm" onClick={() => navigate('/auth')}>Войти</Button>
+              <Button size="sm" className="bg-gradient-to-r from-primary to-secondary hover:opacity-90" onClick={() => navigate('/auth')}>
                 Начать
               </Button>
             </div>
@@ -68,7 +70,7 @@ const Index = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center animate-slide-up">
-            <Button size="lg" className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-lg px-8">
+            <Button size="lg" className="bg-gradient-to-r from-primary to-secondary hover:opacity-90 text-lg px-8" onClick={() => navigate('/auth')}>
               <Icon name="Download" size={20} className="mr-2" />
               Установить расширение
             </Button>
